@@ -4,6 +4,10 @@ male(bob).
 male(carl).
 male(charlie).
 male(dan).
+male(ilya).
+male(borisik).
+male(kesha).
+male(christofet).
 male(edward).
 male(egor).
 male(vladimir).
@@ -15,6 +19,23 @@ female(diana).
 female(natasha).
 female(nadya).
 female(ella).
+female(dasha).
+female(stesha).
+female(stepanida).
+female(jennifer).
+
+parent(ilya, stesha).
+parent(ilya, borisik).
+parent(dasha, stesha).
+parent(dasha, borisik).
+
+parent(natasha, stepanida).
+parent(borisik, stepanida).
+
+parent(egor, kesha).
+parent(egor, christofet).
+parent(jennifer, kesha).
+parent(jennifer, christofet).
 
 
 parent(fevronya, diana).
@@ -99,6 +120,7 @@ cousine(X, Y) :-
     parent(Z, X),
     parent(T, Y),
     siblings(Z, T),
+    Z \= T,
     X \= Y.
 
 daughter(X, Y) :-
