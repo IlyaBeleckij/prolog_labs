@@ -13,6 +13,8 @@ female(fevronya).
 female(betsy).
 female(diana).
 female(natasha).
+female(nadya).
+female(ella).
 
 
 parent(fevronya, diana).
@@ -31,6 +33,9 @@ parent(albert, alice).
 parent(albert, carl).
 parent(diana, carl).
 parent(diana, alice).
+
+parent(vladimir, nadya).
+parent(ella, nadya).
 
 father(X, Y) :- 
     male(X),
@@ -77,7 +82,38 @@ aunt(X, Y) :-
     parent(Z, Y),
     X \= Y.
 
+siblings(X, Y) :-
+    parent(Z, X),
+    parent(Z, Y),
+    X \= Y.
 
+cousin(X, Y) :-
+    male(X),
+    parent(Z, X),
+    parent(T, Y),
+    siblings(Z, T),
+    X \= Y.
+
+cousine(X, Y) :-
+    female(X),
+    parent(Z, X),
+    parent(T, Y),
+    siblings(Z, T),
+    X \= Y.
+
+daughter(X, Y) :-
+    female(X),
+    parent(Y, X).
+
+son(X, Y) :-
+    male(X),
+    parent(Y, X).
+
+mother_in_law(X, Y) :-
+    parent(Y, Z),
+    parent(T, Z),
+    parent(X, T),
+    X \= Y.
 
 
 
